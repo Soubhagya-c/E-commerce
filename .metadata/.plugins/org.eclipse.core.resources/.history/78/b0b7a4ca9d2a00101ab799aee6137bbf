@@ -1,0 +1,11 @@
+package com.ecommerce.application.models.dao;
+
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ecommerce.application.models.Product;
+
+public interface ProductRepository extends JpaRepository<Product, UUID>{
+
+}

@@ -1,0 +1,66 @@
+package com.ecommerce.application.controller;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ecommerce.application.models.Product;
+import com.ecommerce.application.service.ProductService;
+
+@RestController
+@RequestMapping("/api/v1/products")
+@CrossOrigin(origins = "http://localhost:5173")
+public class ProductController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+
+    @Autowired
+    private ProductService productService;
+
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts(@RequestParam(name = "query", required = false) String search) {
+        try {
+            List<Product> products = productService.getAllProducts(search);
+            return ResponseEntity.ok(products);
+        } catch (Exception e) {
+            logger.error("Error fetching all products", e);
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable UUID id) {
+        try {
+            Product product = productService.getProductById(id);
+            if (product != null) {
+                return ResponseEntity.ok(product);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            logger.error("Error fetching product with ID: " + id, e);
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/create")
+    public ResponseEntity<Product> createProduct() {
+        try {
+            Product product = productService.createProduct();
+            return ResponseEntity.ok(product);
+        } catch (Exception e) {
+            logger.error("Error creating product", e);
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+}

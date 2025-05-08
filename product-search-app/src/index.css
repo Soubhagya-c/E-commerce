@@ -1,0 +1,95 @@
+/* Font Import (Google Fonts example) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap');
+:root {
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Roboto Slab', serif;
+}
+
+/* Base Typography */
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: Georgia, serif; /* Optional for special cases */
+  
+  /* Font Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  
+  /* Font Sizes (Modular scale) */
+  --fs-xs: 0.75rem;   /* 12px */
+  --fs-sm: 0.875rem;   /* 14px */
+  --fs-base: 1rem;     /* 16px */
+  --fs-md: 1.125rem;   /* 18px */
+  --fs-lg: 1.25rem;    /* 20px */
+  --fs-xl: 1.5rem;     /* 24px */
+  --fs-xxl: 1.875rem;  /* 30px */
+  --fs-xxxl: 2.25rem;  /* 36px */
+  
+  /* Line Heights */
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+  --lh-loose: 1.7;
+}
+
+/* Apply base font */
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: #333; /* Base text color */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utility Classes */
+.heading-1 {
+  font-size: var(--fs-xxxl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+}
+
+.heading-2 {
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+}
+
+.heading-3 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+}
+
+.heading-4 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+}
+
+.text-lead {
+  font-size: var(--fs-md);
+  line-height: var(--lh-loose);
+}
+
+.text-small {
+  font-size: var(--fs-sm);
+}
+
+.text-xsmall {
+  font-size: var(--fs-xs);
+}
+
+.text-bold {
+  font-weight: var(--fw-bold);
+}
+
+.text-semibold {
+  font-weight: var(--fw-semibold);
+}
+
+.text-muted {
+  color: #666;
+}
